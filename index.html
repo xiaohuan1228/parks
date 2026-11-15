@@ -40,13 +40,14 @@
   button,[role="button"],select,input{min-height:2.25rem}
   button{font-family:inherit;cursor:pointer}
   img{display:block;max-width:100%}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+  @media(min-width:768px){.wrap{padding-left:28px;padding-right:28px}}
 
   /* ---------- Hero ---------- */
   .hero{position:relative;color:#fff;overflow:hidden;background:#0c3a24}
   .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
   .hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,32,18,.28) 0%,rgba(6,32,18,.55) 62%,rgba(6,32,18,.88) 100%)}
-  .hero .inner{position:relative;padding:52px 0 30px}
+  .hero .inner{position:relative;padding-top:52px;padding-bottom:30px}
   .hero h1{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(30px,6vw,46px);line-height:1.2;margin:0 0 10px;letter-spacing:.02em}
   .hero p.lede{margin:0;max-width:620px;font-size:15.5px;color:rgba(255,255,255,.92)}
   .hero .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -167,6 +168,48 @@
 
   footer{margin-top:36px;border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink3);font-size:12.5px}
   footer p{margin:4px 0}
+
+  /* ---------- Mobile: breathing room so content never hugs the edge ---------- */
+  @media (max-width:640px){
+    body{font-size:15px}
+    /* Hero: inset text, 2×2 stats grid instead of squeezed flex row */
+    .hero .inner{padding-top:38px;padding-bottom:28px}
+    .hero h1{font-size:31px}
+    .hero p.lede{font-size:15px;line-height:1.7}
+    .hero .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+    .hero .stat{padding:10px 13px}
+    .hero .stat b{font-size:20px}
+    .hero .note{line-height:1.6}
+    /* Progress card: more inner padding, buttons get their own row */
+    .progress-card{padding:18px 18px 16px;top:-12px}
+    .progress-card .row{gap:8px 12px}
+    .progress-card .row .btn{flex:1 1 42%;justify-content:center;padding-left:8px;padding-right:8px}
+    .progress-card .sub{line-height:1.6}
+    /* Toolbar: comfortable tap/search area inside the new gutters */
+    .toolbar{padding:12px 0 12px}
+    .search input{padding:10px 14px;border-radius:12px}
+    .chips{gap:7px;margin-top:9px}
+    .chip{padding:4px 12px}
+    /* Sections & cards: larger inner padding so text isn't near card edges either */
+    section{padding:24px 0 4px}
+    .sec-head{gap:6px 10px;margin-bottom:4px}
+    .sec-head h2{font-size:21px}
+    .sec-head .count{margin-left:0;width:100%}
+    .grid{gap:16px;margin-top:12px}
+    .card .bd{padding:16px 18px 18px;gap:9px}
+    .card .acts{gap:9px}
+    .picker{padding:18px}
+    .picker .opts{gap:16px}
+    .picker .opts .btn.primary{width:100%;justify-content:center}
+    .routes{gap:12px;margin-top:12px}
+    .route-card{padding:16px 18px}
+    .district{margin-top:12px}
+    .district>h3{padding:13px 18px;flex-wrap:wrap;row-gap:2px}
+    .district>h3 .dprog{margin-left:0;width:100%}
+    .prow{padding:11px 18px;gap:12px}
+    .empty{padding:28px 6px}
+    footer{margin-top:28px;padding:18px 0 calc(34px + env(safe-area-inset-bottom,0px))}
+  }
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.bar i{transition:none}}
 </style>
 </head>
